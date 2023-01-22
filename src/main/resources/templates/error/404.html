@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <base th:href="${#httpServletRequest.scheme + '://' + #httpServletRequest.serverName + ((#httpServletRequest.serverPort != '') ? (':'+(#httpServletRequest.serverPort)) : '') + #httpServletRequest.getContextPath() }">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recruitment | Page Not Found</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/dist/img/favicon.png}"/>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/dist/plugins/fontawesome-free/css/all.min.css}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" th:href="@{/dist/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+
+
+<body class="hold-transition login-page">
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><img th:src="@{/dist/img/akash-logo-blue.svg}" style="width:200px;height:auto;"></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+
+            <div class="flex-center position-ref full-height">
+                <div class="content">
+                    <div>Sorry, the page you are looking for could not be found.</div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+<!-- jQuery -->
+<script th:href="@{/dist/plugins/jquery/jquery.min.js}"></script>
+
+<!-- Bootstrap 4 -->
+<script th:href="@{/dist/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:href="@{/dist/js/adminlte.min.js}"></script>

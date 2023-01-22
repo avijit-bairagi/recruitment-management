@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html layout:decorator="index" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="">
+<head>
+    <title>Recruitment | Applications</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Application</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Application Details</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <div class="alert alert-success" notice="alert" th:text="${success}" th:if="${success}"></div>
+                        <div class="alert alert-danger" notice="alert" th:text="${error}" th:if="${error}"></div>
+
+                        <form th:action="@{/application/edit}" th:object="${applicationInfo}" method="post">
+                            <input type="hidden" id="id" name="id" value="" th:field="*{id}"/>
+                            <input type="hidden" id="fileId" name="id" value="" th:field="*{fileId}"/>
+                            <input type="hidden" id="insertedAt" name="insertedAt" value="" th:field="*{insertedAt}"/>
+                            <input type="hidden" id="updatedAt" name="updatedAt" value="" th:field="*{updatedAt}"/>
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    <label for="email" class="control-label">Email<span
+                                            class="text-danger">*</span></label>
+                                    <textarea id="email" class="form-control" th:field="*{email}" th:minlength="5"
+                                              th:maxlength="300" th:required="true" readonly="true"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fullName" class="control-label">Full Name<span
+                                            class="text-danger">*</span></label>
+                                    <textarea id="fullName" class="form-control" th:field="*{fullName}"
+                                              th:minlength="5" th:maxlength="800" th:required="true" readonly="true"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mobileNo" class="control-label">Mobile No<span
+                                            class="text-danger">*</span></label>
+                                    <textarea id="mobileNo" class="form-control" th:field="*{mobileNo}"
+                                              th:minlength="5" th:maxlength="800" th:required="true" readonly="true"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group blu-margin">
+                                        <select class="form-control" th:field="*{status}" id="dropOperator">
+                                            <option th:each="s : ${statusList}" th:value="${s}"
+                                                    th:text="${s}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+
+            <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+</section>
+
+<section layout:fragment="pageSpecificJs">
+    <script th:inline="javascript">
+    </script>
+</section>
+
+</body>
+</html>

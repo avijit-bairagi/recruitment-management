@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html layout:decorator="index">
+<head>
+    <title>Recruitment | Files</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Uploaded Files</h1>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card -->
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}"></div>
+                            <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+                            <table id="fileInfoDataTable" class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Total Application</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="file : ${files}">
+                                    <td th:text="${file.fileName}"></td>
+                                    <td th:text="${file.totalApplication}"></td>
+                                    <td>
+                                        <a th:href="@{'/application/index/' + ${file.id}}"
+                                           class="btn btn-success">View Applications</a>
+                                        <a onclick="return confirm('Are you sure you want to delete this item?');"
+                                           th:href="@{'/file/delete/' + ${file.id}}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+</section>
+<section layout:fragment="pageSpecificJs">
+    <script th:inline="javascript">
+
+        function setDataTable() {
+          $('#fileInfoDataTable').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+          });
+        }
+        $(function() {
+          setDataTable();
+        });
+
+    </script>
+</section>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <base th:href="${#httpServletRequest.scheme + '://' + #httpServletRequest.serverName + ((#httpServletRequest.serverPort != '') ? (':'+(#httpServletRequest.serverPort)) : '') + #httpServletRequest.getContextPath() }">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recruitment | Log in</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/dist/img/favicon.png}"/>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/dist/plugins/fontawesome-free/css/all.min.css}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" th:href="@{/dist/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+
+
+<body class="hold-transition login-page">
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><img th:src="@{/dist/img/akash-logo-blue.svg}" style="width:200px;height:auto;"></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <h4 style="text-align: center;font-weight: bold;color: #000;padding: 20px;margin-bottom: 35px;">Recruitment Management</h4>
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}">
+            </div>
+            <form method="post" th:action="@{/login}" th:object="${loginuser}" id="loginForm" autocomplete="off">
+                <div class="input-group mb-3">
+                    <input maxlength="40" id="username" name="username" type="text" class="form-control"
+                           placeholder="Username" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input maxlength="30" id="password" name="password" type="password" class="form-control"
+                           placeholder="Password" required autocomplete="off">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:35px;padding:20px;">
+
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <button id="loginButton" type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+<!-- jQuery -->
+<script th:href="@{/dist/plugins/jquery/jquery.min.js}"></script>
+
+<!-- Bootstrap 4 -->
+<script th:href="@{/dist/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:href="@{/dist/js/adminlte.min.js}"></script>
+
+
+</body>
+</html>
